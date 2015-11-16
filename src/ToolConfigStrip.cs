@@ -2052,18 +2052,13 @@ namespace PaintDotNet
         {
             List<string> fontNames = new List<string>();
 
-            using (Graphics g = this.CreateGraphics())
+            foreach (FontFamily family in FontFamily.Families)
             {
-                FontFamily[] families = FontFamily.GetFamilies(g);
-
-                foreach (FontFamily family in families)
+                using (FontInfo fi = new FontInfo(family, 10, FontStyle.Regular))
                 {
-                    using (FontInfo fi = new FontInfo(family, 10, FontStyle.Regular))
+                    if (!fontNames.Contains(family.Name) && fi.CanCreateFont())
                     {
-                        if (!fontNames.Contains(family.Name) && fi.CanCreateFont())
-                        {
-                            fontNames.Add(family.Name);
-                        }
+                        fontNames.Add(family.Name);
                     }
                 }
             }
