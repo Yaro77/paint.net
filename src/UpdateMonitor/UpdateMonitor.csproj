@@ -60,8 +60,7 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>@rem Embed manifest
-call "$(SolutionDir)Manifests\embedManifest.bat" "$(TargetPath)" "$(SolutionDir)Manifests\asInvoker.xml"
-call "$(SolutionDir)Manifests\embedManifest.bat" "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)" "$(SolutionDir)Manifests\asInvoker.xml"
-</PostBuildEvent>
+"$(SolutionDir)Manifests\embedManifest.bat" "$(TargetPath)" "$(SolutionDir)Manifests\asInvoker.xml"
+"$(SolutionDir)Manifests\embedManifest.bat" "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)" "$(SolutionDir)Manifests\asInvoker.xml"</PostBuildEvent>
   </PropertyGroup>
 </Project>

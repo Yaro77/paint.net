@@ -43,12 +43,12 @@
     <OutDir>Debug\</OutDir>
     <IntDir>Debug\</IntDir>
     <NMakeBuildCommandLine>%40rem compiling English strings
-"$(SolutionDir)\BuildTools\resgen.exe" "$(ProjectDir)\Strings.resx" "$(TargetPath)"
+"$(SolutionDir)\BuildTools\resgen.exe" "$(ProjectDir)\Strings.resx" "$(ProjectDir)$(OutDir)PaintDotNet.Strings.3.resources"
 </NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>%40rem compiling English strings
-"$(SolutionDir)\BuildTools\resgen.exe" "$(ProjectDir)\Strings.resx" "$(TargetPath)"
+"$(SolutionDir)\BuildTools\resgen.exe" "$(ProjectDir)\Strings.resx" "$(ProjectDir)$(OutDir)PaintDotNet.Strings.3.resources"
 </NMakeReBuildCommandLine>
-    <NMakeCleanCommandLine>del "$(TargetPath)"</NMakeCleanCommandLine>
+    <NMakeCleanCommandLine>del "$(ProjectDir)$(OutDir)PaintDotNet.Strings.3.resources"</NMakeCleanCommandLine>
     <NMakeOutput>$(OutDir)PaintDotNet.Strings.3.resources</NMakeOutput>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
