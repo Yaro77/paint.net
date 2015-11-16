@@ -1,0 +1,17 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/.vs/paintdotnet/v14
+/src/Backup
+bin
+obj
+/src/DdsFileType/Squish/Squish_x64/Debug
+/src/DdsFileType/Squish/Squish_x86/Debug
+/src/DdsFileType/Squish/Squish_x86_SSE2/Debug
+/src/ShellExtension/ShellExtension_x64/Debug
+/src/ShellExtension/ShellExtension_x86/Debug
+*.user
+/src/Strings/Debug
+/src/GeneratedCode/Debug
+/src/paintdotnet.sdf
