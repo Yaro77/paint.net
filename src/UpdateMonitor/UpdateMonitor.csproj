@@ -62,7 +62,10 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>@rem Embed manifest
+    <PostBuildEvent>@set VCInstallDir="$(DevEnvDir)..\..\VC\"
+@call %25VCInstallDir%25vcvarsall.bat x86
+
+@rem Embed manifest
 "$(SolutionDir)Manifests\embedManifest.bat" "$(TargetPath)" "$(SolutionDir)Manifests\asInvoker.xml"
 "$(SolutionDir)Manifests\embedManifest.bat" "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)" "$(SolutionDir)Manifests\asInvoker.xml"</PostBuildEvent>
   </PropertyGroup>

@@ -8,4 +8,4 @@ cone of paint.net 3.36, that's latest opensource version
 ## Build remarks
 ### Windows
 1. Projects target platform updated to .NET 4.5
-2. Set up environment variable %WIN_SDK_TOOLS% points to folder with *mt.exe* and *signtool.exe*. I personnaly use *x86* environment path C:\Program Files (x86)\Windows Kits\10\bin\x86
+2. Default VC++ tools platform was set to x86 or $(PlatformTarget) if it is specified in project settings

@@ -40,10 +40,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
-    <NMakeBuildCommandLine>set VCInstallDir=$(DevEnvDir)..\..\VC\
-call "%VCInstallDir%vcvarsall.bat"
+    <NMakeBuildCommandLine>@set VCInstallDir="$(DevEnvDir)..\..\VC\"
+@call %VCInstallDir%vcvarsall.bat $(PlatformTarget)
 
-pushd "$(SolutionDir)\Data"
+pushd "$(SolutionDir)Data"
 "%VCInstallDir%\bin\cl.exe" /nologo /C /EP UserBlendOps.Generated.H.cs &gt; UserBlendOps.Generated.cs.temp
 fc UserBlendOps.Generated.cs.temp UserBlendOps.Generated.cs &gt; nul
 if "%ERRORLEVEL%" == "0" goto done1
@@ -52,10 +52,10 @@ copy UserBlendOps.Generated.cs.temp UserBlendOps.Generated.cs
 del UserBlendOps.Generated.cs.temp
 popd
 </NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine>set VCInstallDir=$(DevEnvDir)..\..\VC\
-call "%VCInstallDir%vcvarsall.bat"
+    <NMakeReBuildCommandLine>@set VCInstallDir="$(DevEnvDir)..\..\VC\"
+@call %VCInstallDir%vcvarsall.bat $(PlatformTarget)
 
-pushd "$(SolutionDir)\Data"
+pushd "$(SolutionDir)Data"
 "%VCInstallDir%\bin\cl.exe" /nologo /C /EP UserBlendOps.Generated.H.cs &gt; UserBlendOps.Generated.cs.temp
 fc UserBlendOps.Generated.cs.temp UserBlendOps.Generated.cs &gt; nul
 if "%ERRORLEVEL%" == "0" goto done1

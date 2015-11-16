@@ -476,7 +476,10 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>@rem Sign
+    <PostBuildEvent>@set VCInstallDir="$(DevEnvDir)..\..\VC\"
+@call %25VCInstallDir%25vcvarsall.bat x86
+
+@rem Sign
 rem call "$(SolutionDir)signfile.bat" "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
 rem call "$(SolutionDir)signfile.bat" "$(TargetPath)"
 </PostBuildEvent>
