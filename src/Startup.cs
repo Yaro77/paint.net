@@ -21,6 +21,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using PaintDotNet.Base.Util;
 
 namespace PaintDotNet
 {
@@ -322,8 +323,7 @@ namespace PaintDotNet
                         singleInstanceManager.SendInstanceMessage(arg, 30);
                     }
 
-                    singleInstanceManager.Dispose();
-                    singleInstanceManager = null;
+                    DisposeHelper.Dispose(ref singleInstanceManager);
 
                     return;
                 }

@@ -112,6 +112,7 @@
     <Compile Include="SiphonStream.cs" />
     <Compile Include="Triple.cs" />
     <Compile Include="Triple`3.cs" />
+    <Compile Include="Util\DisposeHelper.cs" />
     <Compile Include="Vector`1.cs" />
     <Compile Include="WeakReference`1.cs" />
     <Compile Include="Win32Window.cs" />
