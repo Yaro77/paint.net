@@ -35,7 +35,7 @@ namespace PaintDotNet
         {
             if (this.syncContext != null && this.syncContext.InvokeRequired)
             {
-                this.syncContext.BeginInvoke(new Procedure(OnStateMachineBegin), null);
+                this.syncContext.BeginInvoke(new Action(OnStateMachineBegin), null);
             }
             else
             {
@@ -51,7 +51,7 @@ namespace PaintDotNet
         {
             if (this.syncContext != null && this.syncContext.InvokeRequired)
             {
-                this.syncContext.BeginInvoke(new Procedure<State>(OnStateBegin), new object[] { state });
+                this.syncContext.BeginInvoke(new Action<State>(OnStateBegin), new object[] { state });
             }
             else
             {
@@ -67,7 +67,7 @@ namespace PaintDotNet
         {
             if (this.syncContext != null && this.syncContext.InvokeRequired)
             {
-                this.syncContext.BeginInvoke(new Procedure<double>(OnStateProgress), new object[] { percent });
+                this.syncContext.BeginInvoke(new Action<double>(OnStateProgress), new object[] { percent });
             }
             else
             {
@@ -83,7 +83,7 @@ namespace PaintDotNet
         {
             if (this.syncContext != null && this.syncContext.InvokeRequired)
             {
-                this.syncContext.BeginInvoke(new Procedure<State>(OnStateWaitingForInput), new object[] { state });
+                this.syncContext.BeginInvoke(new Action<State>(OnStateWaitingForInput), new object[] { state });
             }
             else
             {
@@ -99,7 +99,7 @@ namespace PaintDotNet
         {
             if (this.syncContext != null && this.syncContext.InvokeRequired)
             {
-                this.syncContext.BeginInvoke(new Procedure(OnStateMachineFinished), null);
+                this.syncContext.BeginInvoke(new Action(OnStateMachineFinished), null);
             }
             else
             {

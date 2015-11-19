@@ -103,7 +103,7 @@ namespace PaintDotNet
 
             try
             {
-                this.syncContext.BeginInvoke(new Procedure(DrainThumbnailReadyInvokeList), null);
+                this.syncContext.BeginInvoke(new Action(DrainThumbnailReadyInvokeList), null);
             }
 
             catch (ObjectDisposedException)

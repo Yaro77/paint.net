@@ -1680,7 +1680,7 @@ namespace PaintDotNet
 
         public void PerformActionAsync(AppWorkspaceAction performMe)
         {
-            this.BeginInvoke(new Procedure<AppWorkspaceAction>(PerformAction), new object[] { performMe });
+            this.BeginInvoke(new Action<AppWorkspaceAction>(PerformAction), new object[] { performMe });
         }
 
         public void PerformAction(AppWorkspaceAction performMe)

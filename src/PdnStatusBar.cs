@@ -95,7 +95,7 @@ namespace PaintDotNet
         
         public void ResetProgressStatusBarAsync()
         {
-            this.BeginInvoke(new Procedure(ResetProgressStatusBar));
+            this.BeginInvoke(new Action(ResetProgressStatusBar));
         }
 
         public void EraseProgressStatusBar()
@@ -115,7 +115,7 @@ namespace PaintDotNet
 
         public void EraseProgressStatusBarAsync()
         {
-            this.BeginInvoke(new Procedure(EraseProgressStatusBar));
+            this.BeginInvoke(new Action(EraseProgressStatusBar));
         }
 
         public void ResetProgressStatusBar()

@@ -186,7 +186,7 @@ namespace PaintDotNet
         {
             if (this.IsHandleCreated)
             {
-                BeginInvoke(new Procedure(ExternalFinish), null);
+                BeginInvoke(new Action(ExternalFinish), null);
             }
         }
 

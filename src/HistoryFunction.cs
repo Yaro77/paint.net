@@ -191,7 +191,7 @@ namespace PaintDotNet
             if (this.eventSink.InvokeRequired)
             {
                 this.eventSink.BeginInvoke(
-                    new Procedure<HistoryMemento, Exception>(OnFinished),
+                    new Action<HistoryMemento, Exception>(OnFinished),
                     new object[2] { memento, exception });
             }
             else

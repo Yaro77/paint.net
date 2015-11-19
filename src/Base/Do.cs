@@ -16,8 +16,8 @@ namespace PaintDotNet
         public static void Test<T>(
             T value,
             Function<bool, T> testFn,
-            Procedure<T> ifTrueFn,
-            Procedure<T> ifFalseFn)
+            Action<T> ifTrueFn,
+            Action<T> ifFalseFn)
         {
             (testFn(value) ? ifTrueFn : ifFalseFn)(value);
         }
@@ -25,17 +25,17 @@ namespace PaintDotNet
         public static void GenerateTest<T>(
             Function<T> generate,
             Function<bool, T> test,
-            Procedure<T> ifTrue,
-            Procedure<T> ifFalse)
+            Action<T> ifTrue,
+            Action<T> ifFalse)
         {
             Test(generate(), test, ifTrue, ifFalse);
         }
 
-        public static bool TryBool(Procedure actionProcedure)
+        public static bool TryBool(Action actionAction)
         {
             try
             {
-                actionProcedure();
+                actionAction();
                 return true;
             }
 

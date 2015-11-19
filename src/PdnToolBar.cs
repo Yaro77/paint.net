@@ -466,7 +466,7 @@ namespace PaintDotNet
             this.toolConfigStrip.SelectionDrawModeInfoChanged +=
                 delegate(object sender, EventArgs e)
                 {
-                    BeginInvoke(new Procedure(PerformLayout));
+                    BeginInvoke(new Action(PerformLayout));
                 };
             //
             // documentStrip

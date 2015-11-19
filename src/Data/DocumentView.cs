@@ -788,7 +788,7 @@ namespace PaintDotNet
             {
                 if (InvokeRequired)
                 {
-                    this.Invoke(new Procedure<Document>(DocumentSetImpl), new object[1] { value });
+                    this.Invoke(new Action<Document>(DocumentSetImpl), new object[1] { value });
                 }
                 else
                 {

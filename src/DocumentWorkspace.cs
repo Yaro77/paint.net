@@ -356,7 +356,7 @@ namespace PaintDotNet
 
         public void PerformActionAsync(DocumentWorkspaceAction action)
         {
-            BeginInvoke(new Procedure<DocumentWorkspaceAction>(PerformAction), new object[] { action });
+            BeginInvoke(new Action<DocumentWorkspaceAction>(PerformAction), new object[] { action });
         }
 
         public void PerformAction(DocumentWorkspaceAction action)
@@ -1892,7 +1892,7 @@ namespace PaintDotNet
             {
                 if (this.progressDialog.InvokeRequired)
                 {
-                    this.progressDialog.BeginInvoke(new Procedure<int>(SetItemCount), new object[] { itemCount });
+                    this.progressDialog.BeginInvoke(new Action<int>(SetItemCount), new object[] { itemCount });
                 }
                 else
                 {
@@ -1906,7 +1906,7 @@ namespace PaintDotNet
             {
                 if (this.progressDialog.InvokeRequired)
                 {
-                    this.progressDialog.BeginInvoke(new Procedure<int>(SetItemOrdinal), new object[] { itemOrdinal });
+                    this.progressDialog.BeginInvoke(new Action<int>(SetItemOrdinal), new object[] { itemOrdinal });
                 }
                 else
                 {
@@ -1921,7 +1921,7 @@ namespace PaintDotNet
             {
                 if (this.progressDialog.InvokeRequired)
                 {
-                    this.progressDialog.BeginInvoke(new Procedure<string>(SetItemInfo), new object[] { itemInfo });
+                    this.progressDialog.BeginInvoke(new Action<string>(SetItemInfo), new object[] { itemInfo });
                 }
                 else
                 {
@@ -1934,7 +1934,7 @@ namespace PaintDotNet
             {
                 if (this.progressDialog.InvokeRequired)
                 {
-                    this.progressDialog.BeginInvoke(new Procedure(BeginItem), null);
+                    this.progressDialog.BeginInvoke(new Action(BeginItem), null);
                 }
                 else
                 {
@@ -1947,7 +1947,7 @@ namespace PaintDotNet
             {
                 if (this.progressDialog.InvokeRequired)
                 {
-                    this.progressDialog.BeginInvoke(new Procedure<long>(SetItemWorkTotal), new object[] { totalWork });
+                    this.progressDialog.BeginInvoke(new Action<long>(SetItemWorkTotal), new object[] { totalWork });
                 }
                 else
                 {
@@ -1961,7 +1961,7 @@ namespace PaintDotNet
             {
                 if (this.progressDialog.InvokeRequired)
                 {
-                    this.progressDialog.BeginInvoke(new Procedure<long>(SetItemWorkProgress), new object[] { totalProgress });
+                    this.progressDialog.BeginInvoke(new Action<long>(SetItemWorkProgress), new object[] { totalProgress });
                 }
                 else
                 {
@@ -1974,7 +1974,7 @@ namespace PaintDotNet
             {
                 if (this.progressDialog.InvokeRequired)
                 {
-                    this.progressDialog.BeginInvoke(new Procedure<WorkItemResult>(EndItem), new object[] { result });
+                    this.progressDialog.BeginInvoke(new Action<WorkItemResult>(EndItem), new object[] { result });
                 }
                 else
                 {
@@ -1985,7 +1985,7 @@ namespace PaintDotNet
             {
                 if (this.progressDialog.InvokeRequired)
                 {
-                    this.progressDialog.BeginInvoke(new Procedure<OperationResult>(EndOperation), new object[] { result });
+                    this.progressDialog.BeginInvoke(new Action<OperationResult>(EndOperation), new object[] { result });
                 }
                 else
                 {

@@ -74,7 +74,6 @@
     <Compile Include="OperationResult.cs" />
     <Compile Include="Pair.cs" />
     <Compile Include="Pair`2.cs" />
-    <Compile Include="Procedure.cs" />
     <Compile Include="PropertySystem\BooleanProperty.cs" />
     <Compile Include="PropertySystem\DoubleProperty.cs" />
     <Compile Include="PropertySystem\DoubleVectorProperty.cs">

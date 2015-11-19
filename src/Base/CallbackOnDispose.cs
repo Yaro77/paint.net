@@ -15,9 +15,9 @@ namespace PaintDotNet
     public sealed class CallbackOnDispose
         : IDisposable
     {
-        private Procedure callback;
+        private Action callback;
 
-        public CallbackOnDispose(Procedure callback)
+        public CallbackOnDispose(Action callback)
         {
             this.callback = callback;
         }
@@ -35,7 +35,7 @@ namespace PaintDotNet
 
         private void Dispose(bool disposing)
         {
-            Procedure callback2 = Interlocked.Exchange(ref this.callback, null);
+            Action callback2 = Interlocked.Exchange(ref this.callback, null);
 
             if (callback2 != null)
             {

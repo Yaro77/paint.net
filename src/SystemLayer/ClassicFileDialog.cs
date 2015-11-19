@@ -167,7 +167,7 @@ namespace PaintDotNet.SystemLayer
                 {
                     if (ownerAsControl != null && ownerAsControl.IsHandleCreated)
                     {
-                        ownerAsControl.BeginInvoke(new Procedure<FileDialog>(EnableThumbnailView), new object[] { this.fileDialog });
+                        ownerAsControl.BeginInvoke(new Action<FileDialog>(EnableThumbnailView), new object[] { this.fileDialog });
                     }
 
                     result = this.fileDialog.ShowDialog(modalOwner);

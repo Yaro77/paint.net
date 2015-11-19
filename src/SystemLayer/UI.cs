@@ -653,7 +653,7 @@ namespace PaintDotNet.SystemLayer
             GC.KeepAlive(window);
         }
 
-        internal static void InvokeThroughModalTrampoline(IWin32Window owner, Procedure<IWin32Window> invokeMe)
+        internal static void InvokeThroughModalTrampoline(IWin32Window owner, Action<IWin32Window> invokeMe)
         {
             using (Form modalityFix = new Form())
             {

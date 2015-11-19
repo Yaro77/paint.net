@@ -330,7 +330,7 @@ namespace PaintDotNet
 
             if (IsHandleCreated && maxInsetWidth > insetWidth)
             {
-                BeginInvoke(new Procedure(PerformLayout), null);
+                BeginInvoke(new Action(PerformLayout), null);
             }
 
             base.OnLayout(levent);

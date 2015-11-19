@@ -81,7 +81,7 @@ namespace PaintDotNet
 
                 if (dialog.IsHandleCreated && dialog.InvokeRequired)
                 {
-                    dialog.BeginInvoke(new Procedure(DoProgressUpdate), null);
+                    dialog.BeginInvoke(new Action(DoProgressUpdate), null);
                 }
                 else if (dialog.IsHandleCreated && !dialog.InvokeRequired)
                 {
@@ -153,7 +153,7 @@ namespace PaintDotNet
             {
                 try
                 {
-                    dialog.BeginInvoke(new Procedure(dialog.ExternalFinish), null);
+                    dialog.BeginInvoke(new Action(dialog.ExternalFinish), null);
                 }
 
                 catch (Exception)

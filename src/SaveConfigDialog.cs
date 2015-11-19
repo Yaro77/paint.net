@@ -737,7 +737,7 @@ namespace PaintDotNet
         {
             if (IsHandleCreated)
             {
-                this.BeginInvoke(new Procedure<int>(SetFileSizeProgress), new object[] { (int)e.Percent });
+                this.BeginInvoke(new Action<int>(SetFileSizeProgress), new object[] { (int)e.Percent });
             }
         }
 
@@ -752,7 +752,7 @@ namespace PaintDotNet
 
                 if (callbackBusy)
                 {
-                    this.Invoke(new Procedure(QueueFileSizeTextUpdate));
+                    this.Invoke(new Action(QueueFileSizeTextUpdate));
                 }
                 else
                 {
@@ -808,14 +808,14 @@ namespace PaintDotNet
                     stream.Flush();
                     stream.Close();
 
-                    this.BeginInvoke(new Procedure<string>(UpdateFileSizeAndPreview), new object[] { tempName });
+                    this.BeginInvoke(new Action<string>(UpdateFileSizeAndPreview), new object[] { tempName });
                 }
 #if !DEBUG
             }
 
             catch
             {
-                this.BeginInvoke(new Procedure<string>(UpdateFileSizeAndPreview), new object[] { null } );
+                this.BeginInvoke(new Action<string>(UpdateFileSizeAndPreview), new object[] { null } );
             }
 
             finally

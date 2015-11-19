@@ -81,7 +81,7 @@ namespace PaintDotNet.Actions
                 }
             }
 
-            public event Procedure RenderedRect;
+            public event Action RenderedRect;
             private void OnRenderedRect()
             {
                 if (RenderedRect != null)
@@ -107,7 +107,7 @@ namespace PaintDotNet.Actions
         }
 
         private static BitmapLayer ResizeLayer(BitmapLayer layer, int width, int height, ResamplingAlgorithm algorithm,
-            int tileCount, Procedure progressCallback, ref bool pleaseStopMonitor)
+            int tileCount, Action progressCallback, ref bool pleaseStopMonitor)
         {
             Surface surface = new Surface(width, height);
             surface.Clear(ColorBgra.FromBgra(255, 255, 255, 0));
@@ -216,7 +216,7 @@ namespace PaintDotNet.Actions
 
             private void RenderedRectHandler()
             {
-                this.Owner.BeginInvoke(new Procedure(MarshaledProgressUpdate));
+                this.Owner.BeginInvoke(new Action(MarshaledProgressUpdate));
             }
 
             private void MarshaledProgressUpdate()
@@ -261,7 +261,7 @@ namespace PaintDotNet.Actions
                         if (layer is BitmapLayer)
                         {
                             Layer newLayer = ResizeLayer((BitmapLayer)layer, this.newSize.Width, this.newSize.Height, this.algorithm,
-                                this.tilesPerLayer, new Procedure(RenderedRectHandler), ref this.pleaseStop);
+                                this.tilesPerLayer, new Action(RenderedRectHandler), ref this.pleaseStop);
 
                             if (newLayer == null)
                             {

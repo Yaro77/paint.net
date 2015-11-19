@@ -116,7 +116,7 @@ namespace PaintDotNet
 
         public void PerformClickAsync()
         {
-            this.Owner.BeginInvoke(new Procedure(this.PerformClick));
+            this.Owner.BeginInvoke(new Action(this.PerformClick));
         }
 
         protected virtual void OnAppWorkspaceChanging()
@@ -295,7 +295,7 @@ namespace PaintDotNet
         {
             if (Form.ActiveForm != null)
             {
-                Form.ActiveForm.BeginInvoke(new Procedure(PdnBaseForm.UpdateAllForms));
+                Form.ActiveForm.BeginInvoke(new Action(PdnBaseForm.UpdateAllForms));
             }
 
             string featureName = this.Name ?? this.Text;

@@ -76,7 +76,7 @@ namespace PaintDotNet
 
         private void SingleInstanceManager_InstanceMessageReceived(object sender, EventArgs e)
         {
-            BeginInvoke(new Procedure(ProcessQueuedInstanceMessages), null);
+            BeginInvoke(new Action(ProcessQueuedInstanceMessages), null);
         }
 
         public MainForm()
@@ -1317,7 +1317,7 @@ namespace PaintDotNet
                     if (forms.Count > 0)
                     {
                         form = forms[0];
-                        form.BeginInvoke(new Procedure(PrintFocus));
+                        form.BeginInvoke(new Action(PrintFocus));
                     }
                 }
 
