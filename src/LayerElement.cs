@@ -226,14 +226,16 @@ namespace PaintDotNet
             this.layerDescription = new System.Windows.Forms.Label();
             this.icon = new System.Windows.Forms.PictureBox();
             this.layerVisible = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.SuspendLayout();
             // 
             // layerDescription
             // 
-            this.layerDescription.BackColor = SystemColors.Window;
+            this.layerDescription.BackColor = System.Drawing.SystemColors.Window;
             this.layerDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layerDescription.Location = new System.Drawing.Point(100, 0);
             this.layerDescription.Name = "layerDescription";
-            this.layerDescription.Size = new System.Drawing.Size(150, 50);
+            this.layerDescription.Size = new System.Drawing.Size(0, 150);
             this.layerDescription.TabIndex = 9;
             this.layerDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.layerDescription.Click += new System.EventHandler(this.Control_Click);
@@ -245,22 +247,25 @@ namespace PaintDotNet
             this.icon.Dock = System.Windows.Forms.DockStyle.Left;
             this.icon.Location = new System.Drawing.Point(0, 0);
             this.icon.Name = "icon";
+            this.icon.Size = new System.Drawing.Size(100, 150);
+            this.icon.TabIndex = 10;
             this.icon.TabStop = false;
             this.icon.Click += new System.EventHandler(this.Control_Click);
             this.icon.DoubleClick += new System.EventHandler(this.Control_DoubleClick);
             // 
             // layerVisible
             // 
-            this.layerVisible.BackColor = SystemColors.Window;
+            this.layerVisible.BackColor = System.Drawing.SystemColors.Window;
             this.layerVisible.Checked = true;
             this.layerVisible.CheckState = System.Windows.Forms.CheckState.Checked;
             this.layerVisible.Dock = System.Windows.Forms.DockStyle.Right;
-            this.layerVisible.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            this.layerVisible.Location = new System.Drawing.Point(184, 0);
+            this.layerVisible.Location = new System.Drawing.Point(46, 0);
             this.layerVisible.Name = "layerVisible";
+            this.layerVisible.Size = new System.Drawing.Size(104, 150);
             this.layerVisible.TabIndex = 7;
-            this.layerVisible.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LayerVisible_KeyPress);
+            this.layerVisible.UseVisualStyleBackColor = false;
             this.layerVisible.CheckStateChanged += new System.EventHandler(this.LayerVisible_CheckStateChanged);
+            this.layerVisible.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LayerVisible_KeyPress);
             this.layerVisible.KeyUp += new System.Windows.Forms.KeyEventHandler(this.LayerVisible_KeyUp);
             // 
             // LayerElement
@@ -269,6 +274,7 @@ namespace PaintDotNet
             this.Controls.Add(this.icon);
             this.Controls.Add(this.layerVisible);
             this.Name = "LayerElement";
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.ResumeLayout(false);
 
         }

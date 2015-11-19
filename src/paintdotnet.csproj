@@ -587,6 +587,20 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="LayerControl.resx">
+      <DependentUpon>LayerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerElement.resx">
+      <DependentUpon>LayerElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewFileDialog.resx">
+      <DependentUpon>NewFileDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveConfigDialog.resx">
+      <DependentUpon>SaveConfigDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

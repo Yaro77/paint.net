@@ -214,6 +214,10 @@ namespace PaintDotNet
 
         public PdnToolBar()
         {
+            if (DesignMode)
+            {
+                UI.InitScaling(this);
+            }
             SuspendLayout();
             InitializeComponent();
 

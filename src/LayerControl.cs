@@ -205,6 +205,7 @@ namespace PaintDotNet
 
             // This call is required by the Windows.Forms Form Designer.
             InitializeComponent();
+            this.layerControlPanel.ParentLayerControl = this; // This line produce error if it is in the InitializeComponents()
 
             elementClickDelegate = new EventHandler(ElementClickHandler);
             elementDoubleClickDelegate = new EventHandler(ElementDoubleClickHandler);
@@ -607,7 +608,6 @@ namespace PaintDotNet
             this.layerControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layerControlPanel.Location = new System.Drawing.Point(0, 0);
             this.layerControlPanel.Name = "layerControlPanel";
-            this.layerControlPanel.ParentLayerControl = this;
             this.layerControlPanel.Size = new System.Drawing.Size(150, 150);
             this.layerControlPanel.TabIndex = 2;
             this.layerControlPanel.Click += new EventHandler(LayerControlPanel_Click);
