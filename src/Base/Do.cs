@@ -15,7 +15,7 @@ namespace PaintDotNet
     {
         public static void Test<T>(
             T value,
-            Function<bool, T> testFn,
+            Func<T, bool> testFn,
             Action<T> ifTrueFn,
             Action<T> ifFalseFn)
         {
@@ -24,7 +24,7 @@ namespace PaintDotNet
 
         public static void GenerateTest<T>(
             Func<T> generate,
-            Function<bool, T> test,
+            Func<T, bool> test,
             Action<T> ifTrue,
             Action<T> ifFalse)
         {
@@ -47,7 +47,7 @@ namespace PaintDotNet
 
         public static T TryCatch<T>(
             Func<T> actionFunction,
-            Function<T, Exception> catchClause)
+            Func<Exception, T> catchClause)
         {
             T returnVal;
 

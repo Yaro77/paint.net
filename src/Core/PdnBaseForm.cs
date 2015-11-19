@@ -114,14 +114,14 @@ namespace PaintDotNet
         private FormEx formEx;
         private bool processFormHotKeyMutex = false; // if we're already processing a form hotkey, don't let other hotkeys execute.
 
-        private static Dictionary<Keys, Function<bool, Keys>> hotkeyRegistrar = null;
+        private static Dictionary<Keys, Func<Keys, bool>> hotkeyRegistrar = null;
 
         /// <summary>
         /// Registers a form-wide hot key, and a callback for when the key is pressed.
         /// The callback must be an instance method on a Control. Whatever Form the Control
         /// is on will process the hotkey, as long as the Form is derived from PdnBaseForm.
         /// </summary>
-        public static void RegisterFormHotKey(Keys keys, Function<bool, Keys> callback)
+        public static void RegisterFormHotKey(Keys keys, Func<Keys, bool> callback)
         {
             IComponent targetAsComponent = callback.Target as IComponent;
             IHotKeyTarget targetAsHotKeyTarget = callback.Target as IHotKeyTarget;
@@ -133,10 +133,10 @@ namespace PaintDotNet
 
             if (hotkeyRegistrar == null)
             {
-                hotkeyRegistrar = new Dictionary<Keys, Function<bool, Keys>>();
+                hotkeyRegistrar = new Dictionary<Keys, Func<Keys, bool>>();
             }
 
-            Function<bool, Keys> theDelegate = null;
+            Func<Keys, bool> theDelegate = null;
 
             if (hotkeyRegistrar.ContainsKey(keys))
             {
@@ -146,7 +146,7 @@ namespace PaintDotNet
             }
             else
             {
-                theDelegate = new Function<bool, Keys>(callback);
+                theDelegate = new Func<Keys, bool>(callback);
                 hotkeyRegistrar.Add(keys, theDelegate);
             }
 
@@ -211,23 +211,23 @@ namespace PaintDotNet
 
             foreach (Keys keys in keysList)
             {
-                Function<bool, Keys> theMultiDelegate = hotkeyRegistrar[keys];
+                Func<Keys, bool> theMultiDelegate = hotkeyRegistrar[keys];
 
                 foreach (Delegate theDelegate in theMultiDelegate.GetInvocationList())
                 {
                     if (object.ReferenceEquals(theDelegate.Target, sender))
                     {
-                        UnregisterFormHotKey(keys, (Function<bool, Keys>)theDelegate);
+                        UnregisterFormHotKey(keys, (Func<Keys, bool>)theDelegate);
                     }
                 }
             }
         }
 
-        public static void UnregisterFormHotKey(Keys keys, Function<bool, Keys> callback)
+        public static void UnregisterFormHotKey(Keys keys, Func<Keys, bool> callback)
         {
             if (hotkeyRegistrar != null)
             {
-                Function<bool, Keys> theDelegate = hotkeyRegistrar[keys];
+                Func<Keys, bool> theDelegate = hotkeyRegistrar[keys];
                 theDelegate -= callback;
                 hotkeyRegistrar[keys] = theDelegate;
 
@@ -399,12 +399,12 @@ namespace PaintDotNet
                 {
                     if (hotkeyRegistrar != null && hotkeyRegistrar.ContainsKey(keyData))
                     {
-                        Function<bool, Keys> theDelegate = hotkeyRegistrar[keyData];
+                        Func<Keys, bool> theDelegate = hotkeyRegistrar[keyData];
                         Delegate[] invokeList = theDelegate.GetInvocationList();
 
                         for (int i = invokeList.Length - 1; i >= 0; --i)
                         {
-                            Function<bool, Keys> invokeMe = (Function<bool, Keys>)invokeList[i];
+                            Func<Keys, bool> invokeMe = (Func<Keys, bool>)invokeList[i];
                             object concreteTarget = GetConcreteTarget(invokeMe.Target);
 
                             if (IsTargetFormActive(concreteTarget))

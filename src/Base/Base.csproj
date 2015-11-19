@@ -61,7 +61,6 @@
     <Compile Include="ImageResource.cs" />
     <Compile Include="BoxedConstants.cs" />
     <Compile Include="DeferredFormatter.cs" />
-    <Compile Include="Function.cs" />
     <Compile Include="ICancelable.cs" />
     <Compile Include="ICloneable`1.cs" />
     <Compile Include="IDeferredSerializable.cs" />

@@ -1998,7 +1998,7 @@ namespace PaintDotNet
                 if (this.progressDialog.InvokeRequired)
                 {
                     object result = this.progressDialog.Invoke(
-                        new Function<WorkItemFailureAction, Exception>(ReportItemFailure), 
+                        new Func<Exception, WorkItemFailureAction>(ReportItemFailure), 
                         new object[] { ex });
 
                     return (WorkItemFailureAction)result;
