@@ -152,9 +152,8 @@ namespace PaintDotNet
         private bool CheckForImportantFiles()
         {
             string[] requiredFiles =
-                new string[]
                 {
-                    "FileTypes\\DdsFileType.dll",
+                    @"FileTypes\DdsFileType.dll",
                     "ICSharpCode.SharpZipLib.dll",
                     "Interop.WIA.dll",
                     "PaintDotNet.Base.dll",
@@ -162,18 +161,9 @@ namespace PaintDotNet
                     "PaintDotNet.Data.dll",
                     "PaintDotNet.Effects.dll",
                     "PaintDotNet.Resources.dll",
-                    "PaintDotNet.Strings.3.DE.resources",
-                    "PaintDotNet.Strings.3.ES.resources",
-                    "PaintDotNet.Strings.3.FR.resources",
-                    "PaintDotNet.Strings.3.IT.resources",
-                    "PaintDotNet.Strings.3.JA.resources",
-                    "PaintDotNet.Strings.3.KO.resources",
-                    "PaintDotNet.Strings.3.PT-BR.resources",
                     "PaintDotNet.Strings.3.resources",
-                    "PaintDotNet.Strings.3.ZH-CN.resources",
                     "PaintDotNet.StylusReader.dll",
                     "PaintDotNet.SystemLayer.dll",
-                    "SetupNgen.exe",
                     "ShellExtension_x64.dll",
                     "ShellExtension_x86.dll",
                     "Squish_x64.dll",
