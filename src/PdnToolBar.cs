@@ -219,6 +219,11 @@ namespace PaintDotNet
 
             this.toolChooserStrip.SetTools(DocumentWorkspace.ToolInfos);
 
+            this.viewConfigStrip.GripStyle = toolStripsGripStyle;
+            this.toolChooserStrip.GripStyle = toolStripsGripStyle;
+            this.commonActionsStrip.GripStyle = toolStripsGripStyle;
+            this.toolConfigStrip.GripStyle = toolStripsGripStyle;
+
             this.otsr = new OurToolStripRenderer();
             this.commonActionsStrip.Renderer = otsr;
             this.viewConfigStrip.Renderer = otsr;
@@ -428,7 +433,6 @@ namespace PaintDotNet
             this.commonActionsStrip.AutoSize = false;
             this.commonActionsStrip.TabIndex = 0;
             this.commonActionsStrip.Dock = DockStyle.None;
-            this.commonActionsStrip.GripStyle = toolStripsGripStyle;
             //
             // viewConfigStrip
             //
@@ -439,7 +443,6 @@ namespace PaintDotNet
             this.viewConfigStrip.DrawGrid = false;
             this.viewConfigStrip.TabIndex = 1;
             this.viewConfigStrip.Dock = DockStyle.None;
-            this.viewConfigStrip.GripStyle = toolStripsGripStyle;
             //
             // toolChooserStrip
             //
@@ -447,7 +450,6 @@ namespace PaintDotNet
             this.toolChooserStrip.AutoSize = false;
             this.toolChooserStrip.TabIndex = 2;
             this.toolChooserStrip.Dock = DockStyle.None;
-            this.toolChooserStrip.GripStyle = toolStripsGripStyle;
             this.toolChooserStrip.ChooseDefaultsClicked += new EventHandler(ToolChooserStrip_ChooseDefaultsClicked);
             //
             // toolConfigStrip
@@ -457,17 +459,10 @@ namespace PaintDotNet
             this.toolConfigStrip.ShapeDrawType = PaintDotNet.ShapeDrawType.Outline;
             this.toolConfigStrip.TabIndex = 3;
             this.toolConfigStrip.Dock = DockStyle.None;
-            this.toolConfigStrip.GripStyle = toolStripsGripStyle;
-            this.toolConfigStrip.Layout +=
-                delegate(object sender, LayoutEventArgs e)
-                {
-                    PerformLayout();
-                };
+            this.toolConfigStrip.Layout += new LayoutEventHandler(OnToolConfigStripLayout);
+
             this.toolConfigStrip.SelectionDrawModeInfoChanged +=
-                delegate(object sender, EventArgs e)
-                {
-                    BeginInvoke(new Action(PerformLayout));
-                };
+                new EventHandler(OnToolConfigStripSelectionDrawModeInfoChanged);
             //
             // documentStrip
             //
@@ -502,6 +497,16 @@ namespace PaintDotNet
             this.toolStripPanel.ResumeLayout(false);
             this.toolStripPanel.EndInit();
             this.ResumeLayout(false);
+        }
+
+        private void OnToolConfigStripLayout(object sender, LayoutEventArgs e)
+        {
+            PerformLayout();
+        }
+
+        private void OnToolConfigStripSelectionDrawModeInfoChanged(object sender, EventArgs e)
+        {
+            BeginInvoke(new Action(PerformLayout));
         }
 
         private void ToolChooserStrip_ChooseDefaultsClicked(object sender, EventArgs e)

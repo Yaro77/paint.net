@@ -348,6 +348,17 @@ namespace PaintDotNet
             
             InitializeComponent();
 
+
+            try
+            {
+                this.AllowDrop = true;
+            }
+
+            catch (InvalidOperationException)
+            {
+                // Discard error. See bug #2605.
+            }
+
             this.Icon = PdnInfo.AppIcon;
 
             // Does not load window location/state
@@ -702,16 +713,6 @@ namespace PaintDotNet
             // 
             // MainForm
             // 
-
-            try
-            {
-                this.AllowDrop = true;
-            }
-
-            catch (InvalidOperationException)
-            {
-                // Discard error. See bug #2605.
-            }
 
             this.AutoScaleDimensions = new SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;

@@ -564,10 +564,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AboutDialog.resx">
-      <DependentUpon>AboutDialog.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>

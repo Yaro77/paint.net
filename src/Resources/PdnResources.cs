@@ -228,14 +228,21 @@ namespace PaintDotNet
 
         public static string GetString(string stringName)
         {
-            string theString = resourceManager.GetString(stringName, pdnCulture);
-
-            if (theString == null)
+            try
             {
-                Debug.WriteLine(stringName + " not found");
-            }
+                string theString = resourceManager.GetString(stringName, pdnCulture);
 
-            return theString;
+                if (theString == null)
+                {
+                    Debug.WriteLine(stringName + " not found");
+                }
+
+                return theString;
+            }
+            catch
+            {
+                return stringName; // for designer
+            }
         }
 
         public static Stream GetResourceStream(string fileName)
