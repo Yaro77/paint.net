@@ -131,6 +131,10 @@
       <Project>{80572820-93A5-4278-A513-D902BEA2639C}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
+    <Reference Include="Tesseract, Version=2.4.1.0, Culture=neutral, PublicKeyToken=ebeb3d86bef60cbe, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Tesseract.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutDialog.cs">
@@ -603,8 +607,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>@call build.bat
+@set TessPath=$(SolutionDir)ocr\bin\$(ConfigurationName)45\
+
+xcopy /Y /E /I %25TessPath%25tessdata $(TargetDir)tessdata
+xcopy /Y /E /I %25TessPath%25x86 $(TargetDir)x86
+xcopy /Y /E /I %25TessPath%25x64 $(TargetDir)x64
+xcopy /Y /E /I %25TessPath%25Tesseract.dll $(TargetDir)
+xcopy /Y /E /I %25TessPath%25Tesseract.pdb $(TargetDir)
+xcopy /Y /E /I %25TessPath%25Tesseract.xml $(TargetDir)</PreBuildEvent>
     <PostBuildEvent>@set VCInstallDir="$(DevEnvDir)..\..\VC\"
 @call %25VCInstallDir%25vcvarsall.bat x86
 
