@@ -19,3 +19,6 @@ obj
 
 # OCR part
 /src/ocr
+
+# NuGet
+/src/packages
