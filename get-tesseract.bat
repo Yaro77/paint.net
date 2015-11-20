@@ -1,1 +1,0 @@
-call git clone https://github.com/Yaro77/tesseract.git src/ocr
